@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog site</title>
+    <link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/css/Navigationbar.css}" href="static/css/Navigationbar.css" rel="stylesheet" type="text/css" media="screen"/>
+    <link th:href="@{/css/PostStyling.css}" href="static/css/PostStyling.css" rel="stylesheet" type="text/css" media="screen"/>
+</head>
+<body>
+
+
+<!-- Navigations bar -->
+
+<div class="topnav">
+
+   <span th:if="${user.admin == 'admin'}">
+        <a class="active" th:href="@{'/blog'}">Home</a>
+        <a th:href="@{'/DeleteUser'}">Delete User</a>
+        <a th:href="@{'/DeletePost'}">Delete Post</a>
+        <a th:href="@{'/addpost/'} + ${userId}">Add Post</a>
+        <input type="text" placeholder="Search...">
+   </span>
+
+
+    <span th:if="${user.admin == 'user'}">
+        <a class="active" th:href="@{'/'}">Home</a>
+        <a th:href="@{'/login'}">Login</a>
+        <a th:href="@{'/signup'}">Sign up</a>
+        <input type="text" placeholder="Search...">
+    </span>
+
+</div>
+
+<!-- Post content -->
+<div class="content">
+    <div class="maincontent">
+        <h1>Latest Posts</h1>
+
+        <tr th:each="get: ${getAllPost}">
+
+            <h2><td th:text="${get.postTitle}"></td></h2>
+            <h4>Posted by: <td th:text="${get.auther}"></td></h4>
+
+            <div class="fakeimg" style="height:200px;">
+                <td th:text="${get.postContent}"></td>
+                <a class="glyphicon glyphicon-remove" th:href="@{'/delete'} + '/' + ${get.postId} + '/' + ${userId}"/></a>
+            </div>
+
+
+        </tr>
+
+</div>
+</body>
+</html>

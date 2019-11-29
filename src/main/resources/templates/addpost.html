@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Post</title>
+    <link rel="stylesheet" type="text/css" th:href="@{Styles.css}"/>
+    <link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+</head>
+<body>
+    <h1>Hej</h1>
+
+    <form th:action="@{/addpost} + '/' + ${user.userId} " method="post" >
+
+        <p>Enter Title</p>
+        <input type="text" th:field="${post.postTitle}"/>
+
+        <p>Enter Content</p>
+        <input type="text" th:field="${post.postContent}"/>
+
+        <p>Enter Author</p>
+        <input type="text" th:field="${post.auther}"/>
+
+        <p>Enter Date</p>
+        <input type="text" th:field="${post.date}"/>
+
+        <input class="btn btn-primary" type="submit" value="Add Post"/>
+
+    </form>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete</title>
+</head>
+<body>
+
+    <form th:action="@{/delete} + '/' + ${user.userId}" method="post">
+
+        <input type="hidden" th:field="${post.postId}" th:object="${delete}">
+
+
+        <h2><td th:text="${post.postTitle}"></td></h2>
+
+        <div class="fakeimg" th:type="text" style="height:200px;">
+            <td th:text="${post.postContent}" style="width: 963px; height: 160px;"></td>
+        </div>
+        <input type="submit" class="btn btn-success" value="Delete">
+        <a type="button" class="btn btn-danger" th:href="@{/blog} + '/' + ${user.userId}">Back</a>
+    </form>
+
+
+</body>
+</html>
